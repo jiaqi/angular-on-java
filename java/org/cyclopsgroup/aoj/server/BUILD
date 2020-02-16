@@ -1,6 +1,7 @@
 load("@io_bazel_rules_appengine//appengine:java_appengine.bzl", "java_war")
 
-# Run it with --jvm_flag="-Duse_jetty9_runtime=true" argument for now.
+# Run it with --jvm_flag="-Duse_jetty9_runtime=true" argument for now, otherwise the page fails with
+# "No permissions needed for this runtime" error.
 java_war(
     name = "server",
     srcs = glob(["*.java"]),
