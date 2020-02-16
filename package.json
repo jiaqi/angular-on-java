@@ -1,0 +1,52 @@
+{
+  "name": "angular-on-java",
+  "private": true,
+  "description": "A demo application with Angular and Java",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=10.9.0 <11.0.0",
+    "yarn": ">=1.9.2 <2.0.0"
+  },
+  "dependencies": {
+    "@angular/animations": "8.2.6",
+    "@angular/cdk": "8.2.0",
+    "@angular/common": "8.2.6",
+    "@angular/core": "8.2.6",
+    "@angular/forms": "8.2.6",
+    "@angular/material": "8.2.0",
+    "@angular/platform-browser": "8.2.6",
+    "@angular/platform-browser-dynamic": "8.2.6",
+    "@angular/router": "8.2.6",
+    "@ngrx/store": "8.0.1",
+    "date-fns": "1.30.1",
+    "rxjs": "6.5.2",
+    "systemjs": "0.21.6",
+    "tslib": "1.10.0",
+    "zone.js": "0.10.2"
+  },
+  "devDependencies": {
+    "@angular/bazel": "8.2.6",
+    "@angular/cli": "8.3.4",
+    "@angular/compiler": "8.2.6",
+    "@angular/compiler-cli": "8.2.6",
+    "@bazel/bazel": "^0.29.0",
+    "@bazel/benchmark-runner": "0.1.0",
+    "@bazel/buildifier": "0.28.0",
+    "@bazel/ibazel": "0.10.3",
+    "@bazel/karma": "~0.37.0",
+    "@bazel/protractor": "~0.37.0",
+    "@bazel/typescript": "~0.37.0",
+    "@types/jasmine": "3.4.0",
+    "@types/node": "6.14.6",
+    "clang-format": "1.2.4",
+    "core-js": "2.6.9",
+    "firebase-tools": "7.1.0",
+    "husky": "3.0.4",
+    "ts-morph": "3.1.0",
+    "typescript": "3.4.5"
+  },
+  "scripts": {
+    "build": "bazel build //...",
+    "test": "bazel test //..."
+  }
+}
