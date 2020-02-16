@@ -1,4 +1,6 @@
 .*
 *.log
 *.iml
+*.lock
+bazel-*
 node_modules

@@ -18,8 +18,8 @@ java_library(
 
 # Run it with --jvm_flag="-Duse_jetty9_runtime=true" argument for now.
 appengine_war(
-    name = "webapp",
-    data = glob(["WEB-INF/**"]) + ["//cloudpave/cyclone/web"],
+    name = "war",
+    data = glob(["WEB-INF/**"]),
     data_path = "",
     jars = [":server"],
 )
