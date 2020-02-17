@@ -52,9 +52,7 @@ maven_install(
     ],
 )
 
-#
 # Java appengine support.
-#
 git_repository(
     name = "io_bazel_rules_appengine",
     remote = "https://github.com/bazelbuild/rules_appengine.git",
