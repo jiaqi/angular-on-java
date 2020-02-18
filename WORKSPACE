@@ -69,7 +69,7 @@ load(
 java_appengine_repositories()
 
 # NPM and Angular, copied from https://github.com/angular/angular-bazel-example.
-NODEJS_RULES_VERSION = "0.37.0"
+NODEJS_RULES_VERSION = "1.3.0"
 
 http_archive(
     name = "build_bazel_rules_nodejs",
@@ -79,34 +79,21 @@ http_archive(
 )
 
 # Fetch sass rules for compiling sass files"
-SASS_RULES_VERSION = "86ca977cf2a8ed481859f83a286e164d07335116"
+SASS_RULES_VERSION = "1.25.0"
 
 http_archive(
     name = "io_bazel_rules_sass",
     strip_prefix = "rules_sass-%s" % SASS_RULES_VERSION,
-    url = "https://github.com/bazelbuild/rules_sass/archive/%s.zip" %
-          SASS_RULES_VERSION,
+    urls = [
+        "https://github.com/bazelbuild/rules_sass/archive/%s.zip" %
+        SASS_RULES_VERSION,
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_sass/archive/%s.zip" %
+        SASS_RULES_VERSION,
+    ],
 )
 
 # Check the bazel version and download npm dependencies
-load(
-    "@build_bazel_rules_nodejs//:defs.bzl",
-    "check_bazel_version",
-    "yarn_install",
-)
-
-# Bazel version must be at least the following version because:
-#   - 0.27.0 Adds managed directories support
-check_bazel_version(
-    message = """
-You no longer need to install Bazel on your machine.
-Angular has a dependency on the @bazel/bazel package which supplies it.
-Try running `yarn bazel` instead.
-    (If you did run that, check that you've got a fresh `yarn install`)
-
-""",
-    minimum_bazel_version = "0.27.0",
-)
+load("@build_bazel_rules_nodejs//:index.bzl", "yarn_install")
 
 # Setup the Node.js toolchain & install our npm dependencies into @npm
 yarn_install(
@@ -126,23 +113,24 @@ load("@npm_bazel_protractor//:package.bzl", "npm_bazel_protractor_dependencies")
 npm_bazel_protractor_dependencies()
 
 # Load npm_bazel_karma dependencies
-load("@npm_bazel_karma//:package.bzl", "rules_karma_dependencies")
+load("@npm_bazel_karma//:package.bzl", "npm_bazel_karma_dependencies")
 
-rules_karma_dependencies()
+npm_bazel_karma_dependencies()
 
 # Setup the rules_webtesting toolchain
 load("@io_bazel_rules_webtesting//web:repositories.bzl", "web_test_repositories")
 
 web_test_repositories()
 
-# Temporary work-around for https://github.com/angular/angular/issues/28681
-# TODO(gregmagolan): go back to @io_bazel_rules_webtesting browser_repositories
-load("@npm_bazel_karma//:browser_repositories.bzl", "browser_repositories")
+load("@io_bazel_rules_webtesting//web/versioned:browsers-0.3.2.bzl", "browser_repositories")
 
-browser_repositories()
+browser_repositories(
+    chromium = True,
+    firefox = True,
+)
 
 # Setup the rules_typescript tooolchain
-load("@npm_bazel_typescript//:defs.bzl", "ts_setup_workspace")
+load("@npm_bazel_typescript//:index.bzl", "ts_setup_workspace")
 
 ts_setup_workspace()
 
@@ -150,3 +138,20 @@ ts_setup_workspace()
 load("@io_bazel_rules_sass//sass:sass_repositories.bzl", "sass_repositories")
 
 sass_repositories()
+
+# Support for Remote Execution #
+BAZEL_TOOLCHAINS_VERSION = "2.1.0"
+
+http_archive(
+    name = "bazel_toolchains",
+    sha256 = "4d348abfaddbcee0c077fc51bb1177065c3663191588ab3d958f027cbfe1818b",
+    strip_prefix = "bazel-toolchains-%s" % BAZEL_TOOLCHAINS_VERSION,
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-toolchains/releases" +
+        "/download/%s/bazel-toolchains-%s.tar.gz" %
+        (BAZEL_TOOLCHAINS_VERSION, BAZEL_TOOLCHAINS_VERSION),
+        "https://github.com/bazelbuild/bazel-toolchains/releases" +
+        "/download/%s/bazel-toolchains-%s.tar.gz" %
+        (BAZEL_TOOLCHAINS_VERSION, BAZEL_TOOLCHAINS_VERSION),
+    ],
+)

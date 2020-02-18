@@ -1,7 +1,6 @@
 load("@io_bazel_rules_sass//:defs.bzl", "sass_binary")
 load("@npm_angular_bazel//:index.bzl", "ng_module")
-load("@build_bazel_rules_nodejs//:defs.bzl", "rollup_bundle")
-load("@npm_bazel_typescript//:defs.bzl", "ts_devserver")
+load("@npm_bazel_rollup//:index.bzl", "rollup_bundle")
 
 package_group(
     name = "packages",
@@ -55,27 +54,4 @@ filegroup(
         ":js_bundle",
         ":styles",
     ],
-)
-
-ts_devserver(
-    name = "devserver",
-    data = [],
-    # Start from the development version of the main
-    entry_module = "angular_on_java/webapp/aoj/main-dev",
-    # <script> and <link> tags will be automatically injected into this index file
-    index_html = ":index.html",
-    # These scripts will be included in the JS bundle after require.js
-    # They should have only named UMD modules, or require.js will throw.
-    scripts = [
-        "@npm//:node_modules/@ngrx/store/bundles/store.umd.min.js",
-        "@npm//:node_modules/tslib/tslib.js",
-        "@npm//date-fns:date-fns.umd.js",
-    ],
-    static_files = [
-        ":styles.css",
-        "@npm//:node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-        "@npm//:node_modules/zone.js/dist/zone.min.js",
-    ],
-    # Tell Bazel to build the sources first
-    deps = [":js_module"],
 )
