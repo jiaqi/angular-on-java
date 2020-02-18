@@ -5,7 +5,7 @@ load("@io_bazel_rules_appengine//appengine:java_appengine.bzl", "java_war")
 java_war(
     name = "server",
     srcs = glob(["*.java"]),
-    data = glob(["WEB-INF/**"]) + ["//webapp/aoj"],
+    data = glob(["WEB-INF/**", "*.css"]) + ["//webapp/aoj"],
     data_path = "",
     deps = [
         "//third_party/java/flogger",
