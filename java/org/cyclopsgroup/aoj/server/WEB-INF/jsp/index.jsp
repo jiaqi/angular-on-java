@@ -11,20 +11,11 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="${distRoot}/styles.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
     <app-root></app-root>
-    <script type="text/javascript" src="${distRoot}/runtime.js"></script>
-    <script type="text/javascript" src="${distRoot}/polyfills.js"></script>
-    <c:choose>
-      <c:when test="${production}"> </c:when>
-      <c:otherwise>
-        <script type="text/javascript" src="${distRoot}/styles.js"></script>
-        <script type="text/javascript" src="${distRoot}/vendor.js"></script>
-      </c:otherwise>
-    </c:choose>
-    <script type="text/javascript" src="${distRoot}/main.js"></script>
+    <script type="text/javascript" src="js_bundle.js"></script>
   </body>
 </html>
