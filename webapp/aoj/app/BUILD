@@ -9,5 +9,6 @@ ng_module(
     tsconfig = "//webapp/aoj:tsconfig.json",
     deps = [
         "@npm//@angular/core",
+        "@npm//@angular/platform-browser",
     ],
 )

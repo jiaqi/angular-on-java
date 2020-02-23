@@ -27,11 +27,7 @@ ng_module(
     tsconfig = ":tsconfig.json",
     deps = [
         "//webapp/aoj/app",
-        "@npm//@angular/animations",
-        "@npm//@angular/cdk",
         "@npm//@angular/core",
-        "@npm//@angular/forms",
-        "@npm//@angular/material",
         "@npm//@angular/platform-browser",
         "@npm//@angular/router",
         "@npm//@ngrx/store",
