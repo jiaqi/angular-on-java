@@ -5,3 +5,5 @@
 package-lock.json
 bazel-*
 node_modules
+*.iml
+*.code-workspace

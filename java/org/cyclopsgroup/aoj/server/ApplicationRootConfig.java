@@ -22,8 +22,13 @@ public class ApplicationRootConfig implements WebMvcConfigurer {
   @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
     registry
-        .addResourceHandler("*.css", "*.js", ".ico")
-        .addResourceLocations("/", "classpath:/webapp/aoj/")
+        .addResourceHandler("/dist/**")
+        .addResourceLocations("classpath:/webapp/aoj/", "classpath:/org/cyclopsgroup/aoj/server/")
+        .setCacheControl(CacheControl.maxAge(5, TimeUnit.SECONDS).cachePublic());
+
+    registry
+        .addResourceHandler("/external/**")
+        .addResourceLocations("classpath:/external/npm/node_modules/")
         .setCacheControl(CacheControl.maxAge(5, TimeUnit.SECONDS).cachePublic());
   }
 }
