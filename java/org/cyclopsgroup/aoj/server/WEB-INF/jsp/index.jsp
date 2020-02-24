@@ -5,20 +5,21 @@
 <head>
   <meta charset="utf-8" />
   <title>Angular on Java</title>
+  <link rel="icon" type="image/x-icon" href="/dist/favicon.png" />
   <base href="/" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/png" href="http://example.com/myicon.png">
   <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="/dist/favicon.png" />
   <link rel="stylesheet" href="/dist/styles.css" />
   <link rel="stylesheet" href="/external/@angular/material/prebuilt-themes/deeppurple-amber.css" />
 </head>
 
 <body>
-  <app-root></app-root>
-  <script type="text/javascript" src="/external/core-js/client/core.min.js"></script>
-  <script type="text/javascript" src="/external/systemjs/dist/system.js"></script>
-  <script type="text/javascript" src="/external/zone.js/dist/zone.min.js"></script>
-  <script type="text/javascript" src="/dist/js_bundle_min.js"></script>
+  <app-component></app-component>
+  <script nomodule="" src="/external/core-js/client/core.min.js"></script>
+  <script nomodule="" src="/external/systemjs/dist/system.js"></script>
+  <script type="module" src="/dist/js_bundle.js"></script>
+  <script src="/external/zone.js/dist/zone.min.js"></script>
 </body>
+
 </html>
