@@ -53,12 +53,16 @@ maven_install(
 )
 
 # Java appengine support.
-git_repository(
+# Support of local_jvm_flags and copy of data from dependencies comes from unreleased version for now.
+# git_repository(
+#    name = "io_bazel_rules_appengine",
+#    remote = "https://github.com/jiaqi/rules_appengine.git",
+#    tag = "0.0.9.1",
+#)
+
+local_repository(
     name = "io_bazel_rules_appengine",
-    remote = "https://github.com/bazelbuild/rules_appengine.git",
-    # Check https://github.com/bazelbuild/rules_appengine/releases for the
-    # latest version.
-    tag = "0.0.9",
+    path = "../../jiaqi/rules_appengine",
 )
 
 load(

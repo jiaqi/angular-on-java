@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"org.cyclopsgroup.aoj.server"})
+@ComponentScan({ "org.cyclopsgroup.aoj.server" })
 public class ApplicationRootConfig implements WebMvcConfigurer {
 
   @Override
@@ -21,14 +21,13 @@ public class ApplicationRootConfig implements WebMvcConfigurer {
 
   @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry
-        .addResourceHandler("/dist/**")
-        .addResourceLocations("classpath:/webapp/aoj/", "classpath:/org/cyclopsgroup/aoj/server/")
+    registry.addResourceHandler("/dist/**").addResourceLocations("/webapp/aoj/")
         .setCacheControl(CacheControl.maxAge(5, TimeUnit.SECONDS).cachePublic());
 
-    registry
-        .addResourceHandler("/external/**")
-        .addResourceLocations("classpath:/external/npm/node_modules/")
+    registry.addResourceHandler("/external/**").addResourceLocations("/external/npm/node_modules/")
+        .setCacheControl(CacheControl.maxAge(5, TimeUnit.SECONDS).cachePublic());
+
+    registry.addResourceHandler("*.png", "*.css", "*.js", "*.war").addResourceLocations("/")
         .setCacheControl(CacheControl.maxAge(5, TimeUnit.SECONDS).cachePublic());
   }
 }
