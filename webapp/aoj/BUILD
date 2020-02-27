@@ -40,8 +40,8 @@ ng_module(
 rollup_bundle(
     name = "js_bundle",
     config_file = "rollup.config.js",
-    entry_point = ":main-dev.ts",
-    output_dir = False,
+    entry_points = {":main-dev.ts": "index"},
+    output_dir = True,
     deps = [
         ":js_module",
         "@npm//rollup-plugin-commonjs",
@@ -108,6 +108,7 @@ filegroup(
     name = "aoj",
     srcs = [
         ":js_bundle",
+        ":js_bundle_es5",
         ":styles",
         "@npm//:node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
         "@npm//:node_modules/core-js/client/core.min.js",
