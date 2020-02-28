@@ -25,22 +25,22 @@ sass_binary(
 ng_module(
     name = "js_module",
     srcs = [
-        "main-dev.ts",
+        "main.ts",
     ],
     tsconfig = ":tsconfig.json",
     deps = [
         "//webapp/aoj/app",
         "@npm//@angular/core",
         "@npm//@angular/platform-browser",
-        "@npm//@angular/router",
-        "@npm//@ngrx/store",
+        #"@npm//@angular/router",
+        #"@npm//@ngrx/store",
     ],
 )
 
 rollup_bundle(
     name = "js_bundle",
     config_file = "rollup.config.js",
-    entry_points = {":main-dev.ts": "index"},
+    entry_points = {":main.ts": "index"},
     output_dir = True,
     deps = [
         ":js_module",

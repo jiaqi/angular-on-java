@@ -3,15 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import { AppComponent } from './app.component';
+import { App } from './app';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [App],
   imports: [
     BrowserModule, BrowserAnimationsModule,
   ],
-  exports: [AppComponent],
-  bootstrap: [AppComponent],
+  exports: [App],
+  bootstrap: [App],
 })
 export class AppModule {
 }

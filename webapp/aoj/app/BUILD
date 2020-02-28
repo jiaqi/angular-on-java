@@ -5,7 +5,7 @@ package(default_visibility = ["//webapp/aoj:packages"])
 ng_module(
     name = "app",
     srcs = glob(["*.ts"]),
-    assets = ["app.component.html"],
+    assets = ["app.html"],
     tsconfig = "//webapp/aoj:tsconfig.json",
     deps = [
         "@npm//@angular/core",
