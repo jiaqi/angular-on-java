@@ -32,8 +32,6 @@ ng_module(
         "//webapp/aoj/app",
         "@npm//@angular/core",
         "@npm//@angular/platform-browser",
-        #"@npm//@angular/router",
-        #"@npm//@ngrx/store",
     ],
 )
 
@@ -46,6 +44,7 @@ rollup_bundle(
         ":js_module",
         "@npm//rollup-plugin-commonjs",
         "@npm//rollup-plugin-node-resolve",
+        "@npm//@angular/animations",
     ],
 )
 
