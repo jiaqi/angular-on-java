@@ -1,10 +1,7 @@
-load("@build_bazel_rules_nodejs//:index.bzl", "pkg_web")
 load("@io_bazel_rules_sass//:defs.bzl", "sass_binary")
 load("@npm_angular_bazel//:index.bzl", "ng_module")
 load("@npm_bazel_rollup//:index.bzl", "rollup_bundle")
 load("@npm//@babel/cli:index.bzl", "babel")
-load("@npm_bazel_terser//:index.bzl", "terser_minified")
-load("@npm//history-server:index.bzl", "history_server")
 
 package_group(
     name = "packages",
@@ -30,7 +27,6 @@ ng_module(
     tsconfig = ":tsconfig.json",
     deps = [
         "//webapp/aoj/app",
-        "@npm//@angular/core",
         "@npm//@angular/platform-browser",
     ],
 )
@@ -42,9 +38,9 @@ rollup_bundle(
     output_dir = True,
     deps = [
         ":js_module",
+        "@npm//@angular/animations",
         "@npm//rollup-plugin-commonjs",
         "@npm//rollup-plugin-node-resolve",
-        "@npm//@angular/animations",
     ],
 )
 
@@ -63,44 +59,6 @@ babel(
         "@npm//@babel/preset-env",
     ],
     output_dir = True,
-)
-
-terser_minified(
-    name = "js_bundle_min",
-    src = ":js_bundle",
-)
-
-terser_minified(
-    name = "js_bundle_es5_min",
-    src = ":js_bundle_es5",
-)
-
-pkg_web(
-    name = "web",
-    srcs = [
-        ":js_bundle_es5_min",
-        ":js_bundle_min",
-        ":styles",
-        "@npm//:node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-        "@npm//:node_modules/core-js/client/core.min.js",
-        "@npm//:node_modules/systemjs/dist/system.js",
-        "@npm//:node_modules/zone.js/dist/zone.min.js",
-    ],
-    # In production mode we serve some polyfills with script tags that have hard-coded paths in the index.html
-    # so we must serve them at that path, by stripping a prefix
-    additional_root_paths = [
-        "npm/node_modules/core-js/client",
-        "npm/node_modules/systemjs/dist",
-    ],
-)
-
-history_server(
-    name = "server",
-    data = [":web"],
-    templated_args = [
-        "-a",
-        "webapp/aoj/web",
-    ],
 )
 
 filegroup(
