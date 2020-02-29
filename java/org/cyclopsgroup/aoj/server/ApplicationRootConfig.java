@@ -1,6 +1,5 @@
 package org.cyclopsgroup.aoj.server;
 
-import java.util.concurrent.TimeUnit;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
@@ -22,6 +21,6 @@ public class ApplicationRootConfig implements WebMvcConfigurer {
   @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
     registry.addResourceHandler("*.png", "*.css", "*.js", "*.map").addResourceLocations("/")
-        .setCacheControl(CacheControl.maxAge(5, TimeUnit.SECONDS).cachePublic());
+        .setCacheControl(CacheControl.noCache());
   }
 }
