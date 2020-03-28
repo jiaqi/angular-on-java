@@ -10,7 +10,6 @@ java_war(
         "//webapp/aoj",
     ],
     data_path = "",
-    local_jvm_flags = ["-Duse_jetty9_runtime=true"],  # Avoid "No permissions needed for this runtime" error.
     visibility = ["//visibility:public"],
     deps = [
         "//third_party/java/flogger",

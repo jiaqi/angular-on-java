@@ -68,7 +68,7 @@ load(
 java_appengine_repositories()
 
 # NPM and Angular, copied from https://github.com/angular/angular-bazel-example.
-NODEJS_RULES_VERSION = "1.3.0"
+NODEJS_RULES_VERSION = "1.5.0"
 
 http_archive(
     name = "build_bazel_rules_nodejs",
