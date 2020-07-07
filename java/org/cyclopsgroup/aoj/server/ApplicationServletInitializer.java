@@ -1,12 +1,9 @@
 package org.cyclopsgroup.aoj.server;
 
-import com.google.common.flogger.FluentLogger;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class ApplicationServletInitializer extends
     AbstractAnnotationConfigDispatcherServletInitializer {
-
-  private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
   @Override
   protected Class<?>[] getRootConfigClasses() {

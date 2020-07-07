@@ -11,6 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class ServerController {
   @GetMapping
   public ModelAndView showIndex() {
-    return new ModelAndView("index");
+    return new ModelAndView("index.jsp");
   }
 }
