@@ -36,6 +36,7 @@ maven_install(
         "com.google.truth:truth:0.35",
         "javax.inject:javax.inject:1",
         "javax.servlet:javax.servlet-api:4.0.1",
+        "javax.servlet:jstl:1.2",
         "junit:junit:4.12",
         "org.hamcrest:hamcrest-library:1.3",
         "org.mockito:mockito-core:2.9.0",
@@ -143,5 +144,5 @@ http_archive(
 git_repository(
     name = "bazville",
     remote = "https://github.com/jiaqi/bazville.git",
-    tag = "v_0_0_1",
+    tag = "v_0_0_2",
 )

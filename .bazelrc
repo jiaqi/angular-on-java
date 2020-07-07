@@ -5,3 +5,6 @@ run --incompatible_strict_action_env
 # See https://github.com/angular/angular/blob/master/docs/BAZEL.md#various-flags-used-for-tests
 # Also, https://github.com/angular/angular-bazel-example/issues/263
 build --define=angular_ivy_enabled=True
+
+# Required by tomcat build rule.
+build --experimental_allow_unresolved_symlinks

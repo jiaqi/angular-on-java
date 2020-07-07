@@ -9,6 +9,7 @@ java_library(
     deps = [
         "//third_party/java/flogger",
         "//third_party/java/guava",
+        "//third_party/java/servlet-api",
         "//third_party/java/springframework:spring-web",
     ],
 )
@@ -34,4 +35,5 @@ jar(
 tomcat_binary(
     name = "server",
     app_dir = ":webapp",
+    tomcat_bundle = "@bazville//tools/tomcat:tomcat_9",
 )
