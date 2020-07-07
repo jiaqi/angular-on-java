@@ -36,6 +36,7 @@ maven_install(
         "com.google.truth:truth:0.35",
         "javax.inject:javax.inject:1",
         "javax.servlet:javax.servlet-api:4.0.1",
+        "javax.servlet:jstl:1.2",
         "junit:junit:4.12",
         "org.hamcrest:hamcrest-library:1.3",
         "org.mockito:mockito-core:2.9.0",
@@ -51,21 +52,6 @@ maven_install(
         "https://repo1.maven.org/maven2",
     ],
 )
-
-# Java appengine support.
-# Support of local_jvm_flags and copy of data from dependencies comes from unreleased version for now.
-git_repository(
-    name = "io_bazel_rules_appengine",
-    remote = "https://github.com/jiaqi/rules_appengine.git",
-    tag = "0.0.9.2",
-)
-
-load(
-    "@io_bazel_rules_appengine//appengine:java_appengine.bzl",
-    "java_appengine_repositories",
-)
-
-java_appengine_repositories()
 
 # NPM and Angular, copied from https://github.com/angular/angular-bazel-example.
 NODEJS_RULES_VERSION = "1.5.0"
@@ -153,4 +139,10 @@ http_archive(
         "/download/%s/bazel-toolchains-%s.tar.gz" %
         (BAZEL_TOOLCHAINS_VERSION, BAZEL_TOOLCHAINS_VERSION),
     ],
+)
+
+git_repository(
+    name = "bazville",
+    remote = "https://github.com/jiaqi/bazville.git",
+    tag = "v_0_0_2",
 )
