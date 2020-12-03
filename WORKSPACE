@@ -84,7 +84,7 @@ load("@build_bazel_rules_nodejs//:index.bzl", "npm_install")
 npm_install(
     name = "npm",
     package_json = "//:package.json",
-    package_lock_json = "//:yarn.lock",
+    package_lock_json = "//:package-lock.json",
 )
 
 # Install all bazel dependencies of our npm packages
