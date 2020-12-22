@@ -1,4 +1,4 @@
-load("@npm_angular_bazel//:index.bzl", "ng_module")
+load("//buildtools:ng_module.bzl", "ng_module")
 
 package(default_visibility = ["//webapp/aoj:packages"])
 

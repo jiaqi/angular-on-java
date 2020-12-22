@@ -54,10 +54,11 @@ maven_install(
 )
 
 # NPM and Angular, copied from https://github.com/angular/angular-bazel-example.
-NODEJS_RULES_VERSION = "1.5.0"
+NODEJS_RULES_VERSION = "2.3.2"
 
 http_archive(
     name = "build_bazel_rules_nodejs",
+    sha256 = "b3521b29c7cb0c47a1a735cce7e7e811a4f80d8e3720cf3a1b624533e4bb7cb6",
     urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/" +
             "%s/rules_nodejs-%s.tar.gz" %
             (NODEJS_RULES_VERSION, NODEJS_RULES_VERSION)],
@@ -78,27 +79,22 @@ http_archive(
 )
 
 # Check the bazel version and download npm dependencies
-load("@build_bazel_rules_nodejs//:index.bzl", "npm_install")
+load("@build_bazel_rules_nodejs//:index.bzl", "yarn_install")
 
 # Setup the Node.js toolchain & install our npm dependencies into @npm
-npm_install(
+yarn_install(
     name = "npm",
     package_json = "//:package.json",
-    package_lock_json = "//:package-lock.json",
+    yarn_lock = "//:yarn.lock",
 )
 
-# Install all bazel dependencies of our npm packages
-load("@npm//:install_bazel_dependencies.bzl", "install_bazel_dependencies")
-
-install_bazel_dependencies()
-
-# Load npm_bazel_protractor dependencies
-load("@npm_bazel_protractor//:package.bzl", "npm_bazel_protractor_dependencies")
+# Load @bazel/protractor dependencies
+load("@npm//@bazel/protractor:package.bzl", "npm_bazel_protractor_dependencies")
 
 npm_bazel_protractor_dependencies()
 
-# Load npm_bazel_karma dependencies
-load("@npm_bazel_karma//:package.bzl", "npm_bazel_karma_dependencies")
+# Load @bazel/karma dependencies
+load("@npm//@bazel/karma:package.bzl", "npm_bazel_karma_dependencies")
 
 npm_bazel_karma_dependencies()
 
@@ -114,22 +110,17 @@ browser_repositories(
     firefox = True,
 )
 
-# Setup the rules_typescript tooolchain
-load("@npm_bazel_typescript//:index.bzl", "ts_setup_workspace")
-
-ts_setup_workspace()
-
 # Setup the rules_sass toolchain
 load("@io_bazel_rules_sass//sass:sass_repositories.bzl", "sass_repositories")
 
 sass_repositories()
 
 # Support for Remote Execution #
-BAZEL_TOOLCHAINS_VERSION = "2.1.0"
+BAZEL_TOOLCHAINS_VERSION = "3.2.0"
 
 http_archive(
     name = "bazel_toolchains",
-    sha256 = "4d348abfaddbcee0c077fc51bb1177065c3663191588ab3d958f027cbfe1818b",
+    sha256 = "db48eed61552e25d36fe051a65d2a329cc0fb08442627e8f13960c5ab087a44e",
     strip_prefix = "bazel-toolchains-%s" % BAZEL_TOOLCHAINS_VERSION,
     urls = [
         "https://mirror.bazel.build/github.com/bazelbuild/bazel-toolchains/releases" +
