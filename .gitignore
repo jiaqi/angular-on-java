@@ -1,7 +1,6 @@
 .*
 *.log
 *.iml
-*.lock
 package-lock.json
 bazel-*
 node_modules
