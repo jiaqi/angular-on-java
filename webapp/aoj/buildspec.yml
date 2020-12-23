@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-version:
+      java: correctto11
+    commands:
+      - npm install -g @bazel/bazelisk
+      - npm install -g bazels3cache
+  pre_build:
+    commands:
+      - bazels3cache --bucket=cloudpave-corp
+  build:
+    commands:
+      - bazel build java/org/cyclopsgroup/aoj/server:war
+  post_build:
+    commands:
+      - curl http://localhost:7777/shutdown || echo "Ignore bazels3cache shutdown failure."
+artifacts:
+  files:
+    - bazel-bin/java/org/cyclopsgroup/aoj/server/aoj.war

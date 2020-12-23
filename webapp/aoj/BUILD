@@ -1,6 +1,6 @@
 load("@io_bazel_rules_sass//:defs.bzl", "sass_binary")
-load("@npm_angular_bazel//:index.bzl", "ng_module")
-load("@npm_bazel_rollup//:index.bzl", "rollup_bundle")
+load("//buildtools:ng_module.bzl", "ng_module")
+load("@npm//@bazel/rollup:index.bzl", "rollup_bundle")
 load("@npm//@babel/cli:index.bzl", "babel")
 
 package_group(
@@ -39,8 +39,8 @@ rollup_bundle(
     deps = [
         ":js_module",
         "@npm//@angular/animations",
-        "@npm//rollup-plugin-commonjs",
-        "@npm//rollup-plugin-node-resolve",
+        "@npm//@rollup/plugin-commonjs",
+        "@npm//@rollup/plugin-node-resolve",
     ],
 )
 
