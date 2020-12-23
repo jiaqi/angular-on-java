@@ -18,4 +18,4 @@ phases:
       - curl http://localhost:7777/shutdown || echo "Ignore bazels3cache shutdown failure."
 artifacts:
   files:
-    - bazel-bin/java/org/cyclopsgroup/aoj/server.war
+    - bazel-bin/java/org/cyclopsgroup/aoj/server/aoj.war
