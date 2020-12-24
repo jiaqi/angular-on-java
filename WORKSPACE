@@ -65,7 +65,7 @@ http_archive(
 )
 
 # Fetch sass rules for compiling sass files"
-SASS_RULES_VERSION = "1.25.0"
+SASS_RULES_VERSION = "1.29.0"
 
 http_archive(
     name = "io_bazel_rules_sass",
@@ -92,11 +92,6 @@ yarn_install(
 load("@npm//@bazel/protractor:package.bzl", "npm_bazel_protractor_dependencies")
 
 npm_bazel_protractor_dependencies()
-
-# Load @bazel/karma dependencies
-load("@npm//@bazel/karma:package.bzl", "npm_bazel_karma_dependencies")
-
-npm_bazel_karma_dependencies()
 
 # Setup the rules_webtesting toolchain
 load("@io_bazel_rules_webtesting//web:repositories.bzl", "web_test_repositories")
