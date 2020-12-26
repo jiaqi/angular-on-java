@@ -19,3 +19,4 @@ phases:
 artifacts:
   files:
     - bazel-bin/java/org/cyclopsgroup/aoj/server/aoj.war
+  name: angular-on-java-$(date +%Y-%m-%dT%H%M%S)
