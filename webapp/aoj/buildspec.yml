@@ -22,4 +22,3 @@ artifacts:
     - bazel-bin/java/org/cyclopsgroup/aoj/server/aoj.war
     - bazels3cache.log
   name: angular-on-java-$(date +%Y-%m-%dT%H%M%S)
-  disgard-paths: yes
