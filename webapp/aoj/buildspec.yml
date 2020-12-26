@@ -16,19 +16,10 @@ phases:
   post_build:
     commands:
       - curl http://localhost:7777/shutdown || echo "Ignore bazels3cache shutdown failure."
-reports:
-  bazels3cache:
-    files:
-      - .bazels3cache.log
-    base-directory: /root
+      - cp /root/.bazels3cache.log ./bazels3cache.log
 artifacts:
   files:
     - bazel-bin/java/org/cyclopsgroup/aoj/server/aoj.war
+    - bazels3cache.log
   name: angular-on-java-$(date +%Y-%m-%dT%H%M%S)
   disgard-paths: yes
-  secondary-artifacts:
-    bazels3cache:
-      files:
-        - .bazels3cache.log
-      base-directory: /root
-    
