@@ -110,23 +110,6 @@ load("@io_bazel_rules_sass//sass:sass_repositories.bzl", "sass_repositories")
 
 sass_repositories()
 
-# Support for Remote Execution #
-BAZEL_TOOLCHAINS_VERSION = "3.2.0"
-
-http_archive(
-    name = "bazel_toolchains",
-    sha256 = "db48eed61552e25d36fe051a65d2a329cc0fb08442627e8f13960c5ab087a44e",
-    strip_prefix = "bazel-toolchains-%s" % BAZEL_TOOLCHAINS_VERSION,
-    urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/bazel-toolchains/releases" +
-        "/download/%s/bazel-toolchains-%s.tar.gz" %
-        (BAZEL_TOOLCHAINS_VERSION, BAZEL_TOOLCHAINS_VERSION),
-        "https://github.com/bazelbuild/bazel-toolchains/releases" +
-        "/download/%s/bazel-toolchains-%s.tar.gz" %
-        (BAZEL_TOOLCHAINS_VERSION, BAZEL_TOOLCHAINS_VERSION),
-    ],
-)
-
 git_repository(
     name = "bazville",
     remote = "https://github.com/jiaqi/bazville.git",
