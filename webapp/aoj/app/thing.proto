@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+message Thing {
+    string thing_id = 1;
+}

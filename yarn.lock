@@ -1048,6 +1048,11 @@
   resolved "https://registry.yarnpkg.com/@bazel/ibazel/-/ibazel-0.14.0.tgz#86fa0002bed2ce1123b7ad98d4dd4623a0d93244"
   integrity sha512-s0gyec6lArcRDwVfIP6xpY8iEaFpzrSpyErSppd3r2O49pOEg7n6HGS/qJ8ncvme56vrDk6crl/kQ6VAdEO+rg==
 
+"@bazel/labs@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@bazel/labs/-/labs-3.0.0.tgz#1e7f22acee029aee27b01bef018656ad31c20c35"
+  integrity sha512-+3k2GDGvZ4lrP9wuP7Vqnsy1wU1Zlw6Kub0c8hNfuwc9oWxlobIDQx1hXCBjf0UaThnHoAzQDrRc1tviNQqnyg==
+
 "@bazel/protractor@^2.3.1":
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@bazel/protractor/-/protractor-2.3.2.tgz#a57daa9488c40fa30843947f26474891db130229"
@@ -3544,6 +3549,11 @@ google-p12-pem@^0.1.0:
   dependencies:
     node-forge "^0.7.1"
 
+google-protobuf@3.11.4:
+  version "3.11.4"
+  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.11.4.tgz#598ca405a3cfa917a2132994d008b5932ef42014"
+  integrity sha512-lL6b04rDirurUBOgsY2+LalI6Evq8eH5TcNzi7TYQ3BsIWelT0KSOQSBsXuavEkNf+odQU6c0lgz3UsZXeNX9Q==
+
 got@^6.7.1:
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/got/-/got-6.7.1.tgz#240cd05785a9a18e561dc1b44b41c763ef1e8db0"
@@ -3565,6 +3575,11 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
   integrity sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
+
+grpc-web@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/grpc-web/-/grpc-web-1.1.0.tgz#18f73583a0a8c0b6c44a5cba62e66376d0ad019e"
+  integrity sha512-oPoS4/E/EO0TA2ZOSf3AxV2AbWDeabwfbAo+8oXNenOw87RmKz4hME8Sy4KDu2dUnqK8cuGfzdQlJPAEQEygNQ==
 
 gtoken@^1.2.1:
   version "1.2.3"
