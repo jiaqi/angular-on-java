@@ -12,6 +12,7 @@ RULES_JVM_EXTERNAL_TAG = "3.1"
 
 http_archive(
     name = "rules_jvm_external",
+    sha256 = "e246373de2353f3d34d35814947aa8b7d0dd1a58c2f7a6c41cfeaff3007c2d14",
     strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
     url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" %
           RULES_JVM_EXTERNAL_TAG,
