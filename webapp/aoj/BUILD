@@ -41,6 +41,7 @@ rollup_bundle(
         "@npm//@angular/animations",
         "@npm//@rollup/plugin-commonjs",
         "@npm//@rollup/plugin-node-resolve",
+        "@npm//google-protobuf",
     ],
 )
 
