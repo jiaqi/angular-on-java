@@ -17,8 +17,10 @@ java_library(
 # Web application directory.
 webapp(
     name = "webapp",
-    srcs = glob(["WEB-INF/**"]) + [
-        ":favicon.png",
+    srcs = glob([
+        "WEB-INF/**",
+        "images/**",
+    ]) + [
         "//webapp/aoj",
     ],
     deps = [":serverlib"],

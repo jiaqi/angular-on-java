@@ -4,7 +4,6 @@ workspace(
 )
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 #
 # Enable global maven dependency.
@@ -13,6 +12,7 @@ RULES_JVM_EXTERNAL_TAG = "3.1"
 
 http_archive(
     name = "rules_jvm_external",
+    sha256 = "e246373de2353f3d34d35814947aa8b7d0dd1a58c2f7a6c41cfeaff3007c2d14",
     strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
     url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" %
           RULES_JVM_EXTERNAL_TAG,
@@ -129,10 +129,11 @@ load("@io_bazel_rules_sass//sass:sass_repositories.bzl", "sass_repositories")
 
 sass_repositories()
 
-git_repository(
+http_archive(
     name = "bazville",
-    remote = "https://github.com/jiaqi/bazville.git",
-    tag = "v_0_0_2",
+    sha256 = "902e1fee3d2cf2b1df479b486545c859d9ad3edecc0895559ca49bc58b10c9ad",
+    strip_prefix = "bazville-v_0_0_2",
+    urls = ["https://github.com/jiaqi/bazville/archive/v_0_0_2.zip"],
 )
 
 load("@npm//@bazel/labs:package.bzl", "npm_bazel_labs_dependencies")
