@@ -140,6 +140,8 @@ load("@npm//@bazel/labs:package.bzl", "npm_bazel_labs_dependencies")
 
 npm_bazel_labs_dependencies()
 
+# Protobuf related stuff.
+
 http_archive(
     name = "com_google_protobuf",
     sha256 = "d0f5f605d0d656007ce6c8b5a82df3037e1d8fe8b121ed42e536f569dec16113",
