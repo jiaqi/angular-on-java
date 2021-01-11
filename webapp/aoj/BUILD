@@ -35,6 +35,7 @@ rollup_bundle(
     name = "js_bundle",
     config_file = "rollup.config.js",
     entry_points = {":main.ts": "index"},
+    link_workspace_root = True,
     output_dir = True,
     deps = [
         ":js_module",
