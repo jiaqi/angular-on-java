@@ -54,18 +54,18 @@ maven_install(
 )
 
 # NPM and Angular, copied from https://github.com/angular/angular-bazel-example.
-NODEJS_RULES_VERSION = "2.3.2"
+NODEJS_RULES_VERSION = "3.2.0"
 
 http_archive(
     name = "build_bazel_rules_nodejs",
-    sha256 = "b3521b29c7cb0c47a1a735cce7e7e811a4f80d8e3720cf3a1b624533e4bb7cb6",
+    sha256 = "fcc6dccb39ca88d481224536eb8f9fa754619676c6163f87aa6af94059b02b12",
     urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/" +
             "%s/rules_nodejs-%s.tar.gz" %
             (NODEJS_RULES_VERSION, NODEJS_RULES_VERSION)],
 )
 
 # Fetch sass rules for compiling sass files"
-SASS_RULES_VERSION = "1.29.0"
+SASS_RULES_VERSION = "1.32.7"
 
 http_archive(
     name = "io_bazel_rules_sass",
