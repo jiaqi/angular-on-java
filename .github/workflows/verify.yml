@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install bazel
-        run: npm install -g @bazel/bazelisk
+        run: npm install @bazel/bazelisk
       - name: Build AOJ
         run: bazel build java/org/cyclopsgroup/aoj/server
 
