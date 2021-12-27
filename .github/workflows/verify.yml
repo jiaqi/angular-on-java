@@ -12,7 +12,7 @@ jobs:
           node-version: "16"
           cache: "npm"
       - run: npm install -g bazels3cache
-      - run: bazels3cache --bucket=cloudpave-corp
+      - run: echo "Using key ${AWS_ACCESS_KEY_ID}" && bazels3cache --bucket=cloudpave-corp
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
