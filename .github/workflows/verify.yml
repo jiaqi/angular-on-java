@@ -13,14 +13,13 @@ jobs:
           cache: "npm"
       - run: npm install -g @bazel/bazelisk
       - run: npm install -g bazels3cache
-      - run: pwd && ls -l
       - name: Start Bazel cache
         run: bazels3cache --bucket=cloudpave-corp
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
       - name: Bazel build
+        continue-on-error: true
         run: bazel build --remote_http_cache=http://localhost:7777/bazelcache java/org/cyclopsgroup/aoj/server
       - name: Stop Bazel cache
-        continue-on-error: true
         run: curl http://localhost:7777/shutdown || echo "Ignore bazels3cache shutdown failure."
