@@ -1,0 +1,11 @@
+name: Bazel build
+
+on: push
+
+jobs:
+  build_aoj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Bazel build
+        run: bazel build java/org/cyclopsgroup/aoj/server
