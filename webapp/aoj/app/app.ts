@@ -8,3 +8,4 @@ export class App {
         console.log(`The thing: ${thing}`);
     }
 }
+
