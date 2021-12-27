@@ -7,8 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install bazel
-        run: npm install @bazel/bazelisk
       - name: Build AOJ
-        run: bazel build java/org/cyclopsgroup/aoj/server
-
+        run: bazelist build java/org/cyclopsgroup/aoj/server
