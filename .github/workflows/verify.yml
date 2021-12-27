@@ -11,7 +11,9 @@ jobs:
         with:
           node-version: "16"
           cache: "npm"
+      - run: npm install -g @bazel/bazelisk
       - run: npm install -g bazels3cache
+      - run: pwd && ls -l
       - name: Start Bazel cache
         run: bazels3cache --bucket=cloudpave-corp
         env:
