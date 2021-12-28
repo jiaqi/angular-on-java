@@ -18,8 +18,8 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          BAZEL_BUILD_OPTS: "--remote_http_cache=http://localhost:7777/bazelcache"
       - name: Bazel build
-        continue-on-error: true
-        run: bazel build --remote_http_cache=http://localhost:7777/bazelcache java/org/cyclopsgroup/aoj/server
+        run: bazel build ${BAZEL_BUILD_OPTS} java/org/cyclopsgroup/aoj/server
       - name: Stop Bazel cache
         run: curl http://localhost:7777/shutdown || echo "Ignore bazels3cache shutdown failure."
