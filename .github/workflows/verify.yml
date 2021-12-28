@@ -22,4 +22,5 @@ jobs:
       - name: Bazel build
         run: bazel build ${BAZEL_BUILD_OPTS} java/org/cyclopsgroup/aoj/server
       - name: Stop Bazel cache
+        if: always()
         run: curl http://localhost:7777/shutdown || echo "Ignore bazels3cache shutdown failure."
