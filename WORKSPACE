@@ -18,6 +18,25 @@ http_archive(
           RULES_JVM_EXTERNAL_TAG,
 )
 
+SKYLIB_RULE_VERSION = "1.0.3"
+
+SKYLIB_RULE_SHA265 = "1c531376ac7e5a180e0237938a2536de0c54d93f5c278634818e0efc952dd56c"
+
+http_archive(
+    name = "bazel_skylib",
+    sha256 = SKYLIB_RULE_SHA265,
+    urls = [
+        "https://github.com/bazelbuild/bazel-skylib/releases/download/%s/bazel-skylib-%s.tar.gz" %
+        (SKYLIB_RULE_VERSION, SKYLIB_RULE_VERSION),
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/%s/bazel-skylib-%s.tar.gz" %
+        (SKYLIB_RULE_VERSION, SKYLIB_RULE_VERSION),
+    ],
+)
+
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+
+bazel_skylib_workspace()
+
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 GOOGLE_AUTO_VALUE_VERSION = "1.7"
@@ -116,3 +135,35 @@ http_archive(
     strip_prefix = "bazville-v_0_0_2",
     urls = ["https://github.com/jiaqi/bazville/archive/v_0_0_2.zip"],
 )
+
+load("@npm//@bazel/labs:package.bzl", "npm_bazel_labs_dependencies")
+
+npm_bazel_labs_dependencies()
+
+# Protobuf related stuff.
+
+http_archive(
+    name = "com_google_protobuf",
+    sha256 = "d0f5f605d0d656007ce6c8b5a82df3037e1d8fe8b121ed42e536f569dec16113",
+    strip_prefix = "protobuf-3.14.0",
+    urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.14.0.tar.gz"],
+)
+
+http_archive(
+    name = "rules_proto",
+    sha256 = "3bce0e2fcf502619119c7cac03613fb52ce3034b2159dd3ae9d35f7339558aa3",
+    strip_prefix = "rules_proto-84ba6ec814eebbf5312b2cc029256097ae0042c3",
+    urls = [
+        "https://github.com/bazelbuild/rules_proto/archive/84ba6ec814eebbf5312b2cc029256097ae0042c3.tar.gz",
+    ],
+)
+
+load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
+
+rules_proto_dependencies()
+
+rules_proto_toolchains()
+
+load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+
+protobuf_deps()
