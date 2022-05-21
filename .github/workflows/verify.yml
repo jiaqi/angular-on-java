@@ -12,19 +12,10 @@ jobs:
           node-version: "16"
           cache: "npm"
       - run: npm install -g @bazel/bazelisk
-      - run: npm install -g bazels3cache
-      - name: Start Bazel cache
-        run: bazels3cache --bucket=dist.cloudpave.com
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
-          AWS_DEFAULT_REGION: "us-east-1"
+      - run: echo ${{ secrets.GCLOUD_KEY_BASE64 }} | base64 --decode > .gcloud_key.json
       - name: Bazel build
         env:
-          BAZEL_BUILD_OPTS: "--remote_http_cache=http://localhost:7777/bazelcache/angular-on-java"
-        # The tomcat bundle can't be built for now since the remote cache is not yet
-        # happy with symlink that tomcat build rule uses.
+          BAZEL_BUILD_OPTS: >
+            --remote_cache=https://storage.googleapis.com/cloudpave-test/bazel_cache/angular-on-java
+            --google_credentials=.gcloud_key.json
         run: bazel build $BAZEL_BUILD_OPTS //java/org/cyclopsgroup/aoj/server:war
-      - name: Stop Bazel cache
-        if: always()
-        run: curl http://localhost:7777/shutdown || echo "Ignore bazels3cache shutdown failure."
